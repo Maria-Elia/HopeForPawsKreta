@@ -216,13 +216,13 @@ select:focus-visible,
 
 .section--accent {
   background: var(--color-primary);
-  color: var(--color-bg);
+  color: var(--color-text);
 }
 
 .section--accent h1,
 .section--accent h2,
 .section--accent h3 {
-  color: var(--color-bg);
+  color: var(--color-text);
 }
 
 .section--tight {
