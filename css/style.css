@@ -51,7 +51,7 @@ body {
 
 h1, h2, h3 { margin: 0; font-weight: 700; line-height: 1.4; }
 p { margin: 0 0 1em; }
-img { max-width: 100%; display: block; }
+img { max-width: 100%; height: auto; display: block; }
 ul, ol { margin: 0; padding: 0; list-style: none; }
 button { font-family: inherit; }
 
@@ -284,7 +284,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
   padding: 101px 51px 40px 57px;
 }
 .infotafel__logo { position: absolute; top: 12px; right: 40px; width: 137px; height: 144px; object-fit: cover; }
-.infotafel h1 {
+.infotafel__title {
   font-family: var(--font-heading);
   font-size: 35px;
   line-height: 49px;
@@ -344,6 +344,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
   line-height: 21px;
 }
 .footer__legal a { text-decoration: underline; }
+.footer__credit { margin: 14px 0 0; text-align: center; font-size: 13px; line-height: 18px; }
 
 .pagebar { padding-top: 40px; background: var(--white); }
 .banner {
