@@ -301,7 +301,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
   line-height: 49px;
   margin-bottom: 38px;
 }
-.infotafel__rule { border: 0; border-top: 0.8px solid var(--white); width: 284px; margin: 0 auto; }
+.infotafel__rule { border: 0; border-top: 0.8px solid var(--white); width: min(284px, 100%); margin: 0 auto; }
 .infotafel h3 {
   font-family: var(--font-body);
   font-weight: 400;
