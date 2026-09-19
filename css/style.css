@@ -226,9 +226,10 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
   flex: 1;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: flex-start;
   text-align: left;
+  padding-top: 24px;
 }
 .intro__copy p { margin: 0 0 1.1em; max-width: 440px; }
 .intro__actions { margin-top: 14px; display: flex; gap: 34px; flex-wrap: wrap; justify-content: flex-start; }
