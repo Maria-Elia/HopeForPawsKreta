@@ -348,7 +348,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
 
 .pagebar { padding-top: 40px; background: var(--white); }
 .banner {
-  background: var(--slate);
+  background: var(--slate-deep);
   color: var(--white);
   text-align: center;
   padding: 34px 20px 55px;
@@ -511,7 +511,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
   position: fixed;
   left: 0; right: 0; bottom: 0;
   z-index: 1000;
-  background: var(--slate);
+  background: var(--slate-deep);
   color: var(--white);
   font-size: 14px;
   line-height: 18px;
@@ -534,8 +534,8 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
   font: 300 14px/1 var(--font-body); text-decoration: underline; text-underline-offset: 3px; cursor: pointer;
 }
 .cookie-banner__actions { align-items: center; }
-.cookie-banner #cookie-decline { background: var(--slate); color: var(--white); }
-.cookie-banner #cookie-accept { background: var(--white); color: var(--slate); }
+.cookie-banner #cookie-decline { background: var(--slate-deep); color: var(--white); }
+.cookie-banner #cookie-accept { background: var(--white); color: var(--slate-deep); }
 
 .cc-dialog {
   width: 600px; max-width: calc(100vw - 24px); max-height: calc(100vh - 24px);
@@ -712,3 +712,6 @@ a { transition: color 150ms ease; }
     transition-duration: 0.01ms !important;
   }
 }
+
+.contact-form__note { grid-column: 1 / -1; margin: 6px 0 0; font-size: 13px; line-height: 18px; color: #333; font-weight: 400; }
+.contact-form__note a { color: var(--navy); text-decoration: underline; }
