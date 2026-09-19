@@ -2,6 +2,7 @@
   'use strict';
 
   var KEY = 'hfp_cookie_consent';
+  var MAX_AGE_MS = 365 * 24 * 60 * 60 * 1000;
   var CATEGORIES = [
     {
       id: 'necessary',
@@ -33,10 +34,9 @@
     var raw;
     try { raw = localStorage.getItem(KEY); } catch (e) { return null; }
     if (!raw) return null;
-    if (raw === 'accepted') return { functional: true, marketing: true, analytics: true };
-    if (raw === 'declined') return { functional: false, marketing: false, analytics: false };
     try {
       var o = JSON.parse(raw);
+      if (!o.ts || Date.now() - o.ts > MAX_AGE_MS) return null;
       return { functional: !!o.functional, marketing: !!o.marketing, analytics: !!o.analytics };
     } catch (e) {
       return null;
@@ -50,7 +50,8 @@
   window.hasCookieConsent = hasCookieConsent;
 
   function save(consent) {
-    try { localStorage.setItem(KEY, JSON.stringify(consent)); } catch (e) { }
+    var stored = { functional: !!consent.functional, marketing: !!consent.marketing, analytics: !!consent.analytics, ts: Date.now() };
+    try { localStorage.setItem(KEY, JSON.stringify(stored)); } catch (e) { }
     var banner = document.getElementById('cookie-banner');
     if (banner) banner.hidden = true;
     renderMaps();
