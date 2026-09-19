@@ -89,7 +89,8 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
 }
 
 .nav__logo { justify-self: start; margin: 13px 0 0 39px; }
-.nav__logo img { width: 92px; height: 97px; object-fit: cover; }
+.nav__logo { flex: none; }
+.nav__logo img { width: 92px; height: 97px; max-width: none; object-fit: contain; }
 
 .nav__list {
   display: flex;
