@@ -19,6 +19,7 @@
   --blue-light: #bbd4e6;
   --blue-footer: #b4cbdd;
   --slate: #61829a;
+  --slate-deep: #587a93;
   --grey-card: rgba(212, 212, 212, 0.8);
   --white: #fff;
   --black: #000;
@@ -100,7 +101,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
   padding: 0 13px;
 }
 .nav__list a:hover,
-.nav__list a[aria-current="page"] { color: var(--blue); }
+.nav__list a[aria-current] { color: var(--blue); }
 .nav__list .nav__hidden { display: none; }
 
 .nav__social {
@@ -358,7 +359,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
   grid-template-columns: repeat(2, 648px);
   gap: 40px 44px;
   justify-content: center;
-  padding: 27px 0 27px;
+  padding: 27px 0 64px;
   margin: 0 auto;
 }
 .team-card {
@@ -378,6 +379,18 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
   margin-bottom: 1px;
 }
 .team-card__body p { font-size: 14px; line-height: 1.4; color: var(--navy); margin: 0; }
+
+.charter { background: var(--slate-deep); color: var(--white); padding: 52px 20px; }
+.charter__inner {
+  width: 1336px; max-width: 100%; margin: 0 auto;
+  display: flex; align-items: center; justify-content: space-between;
+  flex-wrap: wrap; gap: 28px 48px;
+}
+.charter h2 { font-family: var(--font-heading); font-size: 35px; line-height: 49px; }
+.charter p { margin: 2px 0 0; font-size: 17px; }
+.charter__actions { display: flex; align-items: center; flex-wrap: wrap; gap: 20px 32px; }
+.charter__pdf { color: var(--white); font-size: 16px; text-decoration: underline; text-underline-offset: 4px; }
+.charter__pdf:hover { color: var(--white); text-decoration-thickness: 2px; }
 
 .about { text-align: center; padding: 91px 20px 128px; }
 .about__eyebrow { font-family: var(--font-avenir); font-weight: 800; font-size: 20px; line-height: 24px; margin: 0; }
@@ -580,7 +593,8 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
   .team-card { flex-direction: column; height: auto; }
   .team-card__photo { width: 100%; height: 340px; }
   .team-card__body { padding: 20px 24px 28px; }
-  .team { padding: 24px 16px; gap: 24px; }
+  .team { padding: 24px 16px 40px; gap: 24px; }
+  .charter { padding: 40px 24px; }
 
   .about { padding: 50px 20px 50px; }
   .about h1 { font-size: 40px; line-height: 48px; }
