@@ -42,11 +42,6 @@
 
     <section class="legal legal--datenschutz">
 
-        <div class="notice">
-          <p class="notice__label">Hinweis für die Vereinsleitung – kein Bestandteil der Datenschutzerklärung</p>
-          <p>Das Kontaktformular dieser Website wird aktuell über den Drittanbieter <strong>Web3Forms</strong> verarbeitet, und der Cookie-Banner ist eine selbst entwickelte Lösung, die die Einwilligung im <strong>localStorage</strong> des Browsers speichert. Die nachfolgende Datenschutzerklärung wurde jedoch für die ursprüngliche, bei Wix gehostete Website erstellt und nennt dort ausschließlich Wix' eigene Auftragsverarbeiter – nicht Web3Forms oder die eigene Cookie-Lösung. Bitte diesen Sachverhalt vor dem Launch rechtlich prüfen und die Erklärung entsprechend aktualisieren lassen.</p>
-        </div>
-
         <h2>Inhaltsübersicht</h2>
         <ul>
           <li><a href="#verantwortlicher">Verantwortlicher</a></li>
@@ -237,12 +232,14 @@
       <a href="impressum.html">Impressum</a>
       <a href="vereinssatzung.html">Vereinssatzung</a>
       <a href="datenschutz.html">Datenschutz</a>
+      <button class="footer__linkbtn" type="button" data-cookie-settings>Cookie-Einstellungen</button>
     </nav>
   </footer>
 
   <div id="cookie-banner" class="cookie-banner" role="dialog" aria-live="polite" aria-label="Cookie-Hinweis" hidden>
-    <p>Wir verwenden nur technisch notwendige Cookies. Weitere Infos in unserer <a href="datenschutz.html">Datenschutzerklärung</a>.</p>
+    <p>Diese Website verwendet Cookies und lädt auf Wunsch externe Inhalte (Google Maps), um ein verbessertes Nutzererlebnis zu bieten. Per Klick auf „Zustimmen“ erkläre ich mich damit einverstanden. <a href="datenschutz.html">Datenschutzerklärung</a></p>
     <div class="cookie-banner__actions">
+      <button id="cookie-settings" class="cb-link" type="button">Einstellungen</button>
       <button id="cookie-decline" class="cb-btn" type="button">Alle ablehnen</button>
       <button id="cookie-accept" class="cb-btn" type="button">Zustimmen</button>
     </div>
