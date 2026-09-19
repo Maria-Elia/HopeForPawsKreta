@@ -534,7 +534,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
   font: 300 14px/1 var(--font-body); text-decoration: underline; text-underline-offset: 3px; cursor: pointer;
 }
 .cookie-banner__actions { align-items: center; }
-.cookie-banner #cookie-decline { background: var(--slate-deep); color: var(--white); }
+.cookie-banner #cookie-decline,
 .cookie-banner #cookie-accept { background: var(--white); color: var(--slate-deep); }
 
 .cc-dialog {
