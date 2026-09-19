@@ -3,17 +3,14 @@
 
   var KEY = 'hfp_cookie_consent';
   var MAX_AGE_MS = 365 * 24 * 60 * 60 * 1000;
+  var GOATCOUNTER_ENDPOINT = 'https://hopeforpaws.goatcounter.com/count';
+  var GOATCOUNTER_SCRIPT = 'https://gc.zgo.at/count.js';
   var CATEGORIES = [
     {
       id: 'necessary',
       title: 'Unbedingt erforderliche Cookies',
       text: 'Diese Cookies werden für grundlegende Funktionen wie Sicherheit, Identitätsprüfung und Netzwerkmanagement benötigt. Sie können daher nicht deaktiviert werden.',
       locked: true
-    },
-    {
-      id: 'marketing',
-      title: 'Marketing-Cookies',
-      text: 'Diese Cookies werden verwendet, um die Effektivität von Werbung zu messen, einen personalisierten Service zu bieten und Werbeanzeigen an Besucherbedürfnisse anzupassen.'
     },
     {
       id: 'functional',
@@ -23,7 +20,7 @@
     {
       id: 'analytics',
       title: 'Analytics-Cookies',
-      text: 'Diese Cookies werden verwendet, um zu verstehen, wie Besucher mit unserer Website interagieren, um Fehler zu entdecken und verbesserte Analysedaten zu bieten.'
+      text: 'Erlaubt eine anonyme Reichweitenmessung mit GoatCounter, um zu verstehen, wie Besucher unsere Website nutzen und um Fehler zu entdecken. GoatCounter setzt keine Cookies und speichert keine IP-Adressen.'
     }
   ];
 
@@ -37,7 +34,7 @@
     try {
       var o = JSON.parse(raw);
       if (!o.ts || Date.now() - o.ts > MAX_AGE_MS) return null;
-      return { functional: !!o.functional, marketing: !!o.marketing, analytics: !!o.analytics };
+      return { functional: !!o.functional, analytics: !!o.analytics };
     } catch (e) {
       return null;
     }
@@ -50,13 +47,14 @@
   window.hasCookieConsent = hasCookieConsent;
 
   function save(consent) {
-    var stored = { functional: !!consent.functional, marketing: !!consent.marketing, analytics: !!consent.analytics, ts: Date.now() };
+    var stored = { functional: !!consent.functional, analytics: !!consent.analytics, ts: Date.now() };
     try { localStorage.setItem(KEY, JSON.stringify(stored)); } catch (e) { }
     var banner = document.getElementById('cookie-banner');
     if (banner) banner.hidden = true;
     renderMaps();
+    loadAnalytics();
     document.dispatchEvent(new CustomEvent('cookie-consent:changed', { detail: consent }));
-    if (consent.functional || consent.marketing || consent.analytics) {
+    if (consent.functional || consent.analytics) {
       document.dispatchEvent(new CustomEvent('cookie-consent:accepted', { detail: consent }));
     }
   }
@@ -82,7 +80,7 @@
     title.id = 'cc-title';
 
     var list = el('div', 'cc-dialog__list');
-    var current = readConsent() || { functional: false, marketing: false, analytics: false };
+    var current = readConsent() || { functional: false, analytics: false };
 
     CATEGORIES.forEach(function (cat) {
       var row = el('div', 'cc-row');
@@ -108,7 +106,7 @@
     var confirm = el('button', 'cc-dialog__confirm', 'Auswahl bestätigen');
     confirm.type = 'button';
     confirm.addEventListener('click', function () {
-      var chosen = { functional: false, marketing: false, analytics: false };
+      var chosen = { functional: false, analytics: false };
       list.querySelectorAll('input[type=checkbox]:not(:disabled)').forEach(function (i) {
         chosen[i.name] = i.checked;
       });
@@ -139,6 +137,17 @@
     else dialog.setAttribute('open', '');
   }
   window.openCookieSettings = openCookieSettings;
+
+  var analyticsLoaded = false;
+  function loadAnalytics() {
+    if (analyticsLoaded || !GOATCOUNTER_ENDPOINT || !hasCookieConsent('analytics')) return;
+    analyticsLoaded = true;
+    var s = document.createElement('script');
+    s.async = true;
+    s.src = GOATCOUNTER_SCRIPT;
+    s.setAttribute('data-goatcounter', GOATCOUNTER_ENDPOINT);
+    document.head.appendChild(s);
+  }
 
   function mapUrl(query) {
     return 'https://www.google.com/maps?q=' + encodeURIComponent(query) + '&hl=de&z=15&output=embed';
@@ -172,7 +181,7 @@
       var load = el('button', 'gmap__btn', 'Karte laden');
       load.type = 'button';
       load.addEventListener('click', function () {
-        var c = readConsent() || { functional: false, marketing: false, analytics: false };
+        var c = readConsent() || { functional: false, analytics: false };
         c.functional = true;
         save(c);
       });
@@ -200,10 +209,10 @@
       var decline = document.getElementById('cookie-decline');
       var settings = document.getElementById('cookie-settings');
       if (accept) accept.addEventListener('click', function () {
-        save({ functional: true, marketing: true, analytics: true });
+        save({ functional: true, analytics: true });
       });
       if (decline) decline.addEventListener('click', function () {
-        save({ functional: false, marketing: false, analytics: false });
+        save({ functional: false, analytics: false });
       });
       if (settings) settings.addEventListener('click', function () { openCookieSettings(settings); });
     }
@@ -213,6 +222,7 @@
     });
 
     renderMaps();
+    loadAnalytics();
   }
 
   document.addEventListener('DOMContentLoaded', initCookieBanner);

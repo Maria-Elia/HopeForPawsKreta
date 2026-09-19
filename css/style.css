@@ -14,6 +14,9 @@
 }
 
 :root {
+  --blue-btn: #3f7399;
+  --blue-btn-hover: #35627f;
+  --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
   --blue: #81adcd;
   --navy: #1f5176;
   --blue-light: #bbd4e6;
@@ -132,8 +135,8 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
 }
 .btn:hover { color: var(--navy); background: #eaf2f8; }
 
-.btn--blue { background: var(--blue); color: var(--white); font-weight: 400; letter-spacing: 0; border-radius: 100px; height: 47px; padding: 0 17px; }
-.btn--blue:hover { background: #6d9bbd; color: var(--white); }
+.btn--blue { background: var(--blue-btn); color: var(--white); font-weight: 400; letter-spacing: 0; border-radius: 100px; height: 47px; padding: 0 17px; }
+.btn--blue:hover { background: var(--blue-btn-hover); color: var(--white); }
 
 .hero {
   position: relative;
@@ -439,10 +442,10 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
 .contact-form .full { grid-column: 1 / -1; }
 .contact-form__foot { grid-column: 1 / -1; display: flex; flex-direction: column; align-items: flex-end; gap: 6px; }
 .contact-form button[type="submit"] {
-  width: 128px; height: 36px; border: 0; border-radius: 100px; background: var(--blue); color: var(--white);
+  width: 128px; height: 36px; border: 0; border-radius: 100px; background: var(--blue-btn); color: var(--white);
   font: 700 18px/25px var(--font-body); cursor: pointer;
 }
-.contact-form button[type="submit"]:hover { background: #6d9bbd; }
+.contact-form button[type="submit"]:hover { background: var(--blue-btn-hover); }
 .contact-form button[disabled] { opacity: 0.6; cursor: default; }
 #form-status { margin: 0; font-size: 14px; text-align: right; }
 .form-status--success { color: #1b6e3a; }
@@ -676,4 +679,35 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
 
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
+}
+
+a { transition: color 150ms ease; }
+
+.btn, .btn--blue, .contact-form button[type="submit"], .gmap__btn,
+.cc-dialog__confirm, .cookie-banner .cb-btn, .cookie-banner .cb-link,
+.gmap__link, .footer__linkbtn, .nav__toggle {
+  transition: transform 160ms var(--ease-out), background-color 160ms ease, color 160ms ease;
+}
+.btn:active, .btn--blue:active, .contact-form button[type="submit"]:not([disabled]):active,
+.gmap__btn:active, .cc-dialog__confirm:active, .cookie-banner .cb-btn:active {
+  transform: scale(0.97);
+}
+
+@keyframes rise-in { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: none; } }
+@keyframes pop-in { from { opacity: 0; transform: scale(0.96); } to { opacity: 1; transform: none; } }
+@keyframes fade-in { from { opacity: 0; } to { opacity: 1; } }
+
+.cookie-banner:not([hidden]) { animation: rise-in 240ms var(--ease-out) both; }
+.cc-dialog[open] { animation: pop-in 200ms var(--ease-out) both; }
+.cc-dialog[open]::backdrop { animation: fade-in 200ms ease both; }
+@media (max-width: 900px) {
+  .nav.is-open .nav__list { animation: rise-in 180ms var(--ease-out) both; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
 }
