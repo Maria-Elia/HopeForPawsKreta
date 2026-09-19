@@ -49,9 +49,10 @@ body {
   background: var(--white);
 }
 
-h1, h2, h3 { margin: 0; font-weight: 700; line-height: 1.4; }
+h1, h2, h3 { margin: 0; font-weight: 700; line-height: 1.4; overflow-wrap: anywhere; }
 p { margin: 0 0 1em; }
 img { max-width: 100%; height: auto; display: block; }
+.legal, .impressum, .post, .sidebar, .infotafel__body, .footer, .split__body, .contact { overflow-wrap: anywhere; }
 ul, ol { margin: 0; padding: 0; list-style: none; }
 button { font-family: inherit; }
 
@@ -113,7 +114,8 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
   display: flex;
   gap: 20px;
 }
-.nav__social img { width: 20px; height: 20px; }
+.nav__social a { flex: none; display: block; }
+.nav__social img { width: 20px; height: 20px; flex: none; max-width: none; object-fit: contain; }
 
 .nav__toggle { display: none; }
 
@@ -208,7 +210,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
   color: var(--white);
   display: grid;
   grid-template-columns: 1fr 556px;
-  padding: 0 calc((100% - 980px) / 2 - 52px) 62px calc((100% - 980px) / 2);
+  padding: 0 max(24px, calc((100% - 980px) / 2 - 52px)) 62px max(24px, calc((100% - 980px) / 2));
 }
 .intro__copy {
   display: flex;
@@ -316,7 +318,8 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
 .infotafel__lbl { font-size: 18px; line-height: 25px; display: block; }
 .infotafel__stats .infotafel__lbl:first-of-type { margin-bottom: 4px; }
 .infotafel__social { display: flex; justify-content: center; gap: 15px; margin-top: 22px; }
-.infotafel__social img { width: 30px; height: 30px; }
+.infotafel__social a { flex: none; display: block; }
+.infotafel__social img { width: 30px; height: 30px; flex: none; max-width: none; object-fit: contain; }
 
 .footer {
   background: var(--blue-footer);
@@ -369,7 +372,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
 
 .team {
   display: grid;
-  grid-template-columns: repeat(2, 648px);
+  grid-template-columns: repeat(2, minmax(0, 648px));
   gap: 40px 44px;
   justify-content: center;
   padding: 27px 0 64px;
@@ -382,7 +385,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
   overflow: hidden;
 }
 .team-card__photo { width: 266px; height: 344px; object-fit: cover; flex: none; }
-.team-card__body { padding: 84px 31px 0 94px; }
+.team-card__body { padding: 84px 31px 0 clamp(28px, 6vw, 94px); min-width: 0; }
 .team-card__name {
   font-family: var(--font-avenir);
   font-weight: 800;
@@ -434,13 +437,14 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
 .contact h1 { font-family: var(--font-heading); font-weight: 400; font-size: 33px; line-height: 49px; color: var(--navy); margin-bottom: 15px; }
 .contact__intro p { margin: 0; line-height: 22.4px; max-width: 868px; }
 .contact__intro p + p { margin-top: 1px; }
-.contact__grid { display: grid; grid-template-columns: 378px 521px; gap: 0 20px; margin-top: 56px; }
+.contact__grid { display: grid; grid-template-columns: minmax(0, 378px) minmax(0, 521px); gap: 0 20px; margin-top: 56px; }
 .contact__info { padding-left: 55px; font-size: 16px; }
 .contact__row { display: flex; align-items: center; gap: 15px; min-height: 26px; margin-bottom: 20px; line-height: 32px; }
 .contact__row svg { width: 23px; height: 23px; flex: none; fill: none; stroke: var(--black); stroke-width: 1.4; }
 .contact__row a { color: var(--black); }
 .contact__social { display: flex; align-items: center; gap: 5px; margin-top: 44px; }
-.contact__social img { width: 23px; height: 23px; }
+.contact__social a { flex: none; display: block; }
+.contact__social img { width: 23px; height: 23px; flex: none; max-width: none; object-fit: contain; }
 
 .contact-form { width: 521px; max-width: 100%; padding: 16px 31px 0; display: grid; grid-template-columns: 1fr 1fr; gap: 0 20px; align-content: start; }
 .contact-form label { font-family: var(--font-body); font-weight: 400; font-size: 18px; line-height: 18px; color: var(--navy); margin-bottom: 9px; display: block; }
@@ -450,6 +454,8 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
 }
 .contact-form textarea { height: 86px; resize: vertical; margin-bottom: 20px; }
 .contact-form .full { grid-column: 1 / -1; }
+.contact-form > * { min-width: 0; }
+.contact-form input[type="text"], .contact-form input[type="email"], .contact-form textarea { min-width: 0; }
 .contact-form__foot { grid-column: 1 / -1; display: flex; flex-direction: column; align-items: flex-end; gap: 6px; }
 .contact-form button[type="submit"] {
   width: 128px; height: 36px; border: 0; border-radius: 100px; background: var(--blue-btn); color: var(--white);
@@ -469,7 +475,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
   padding: 28px 20px 40px;
   min-height: 316px;
 }
-.legal-hero h1 { font-family: var(--font-heading); font-size: 33px; line-height: 46px; margin-bottom: 30px; }
+.legal-hero h1 { font-family: var(--font-heading); font-size: clamp(24px, 7.2vw, 33px); line-height: 1.4; margin-bottom: 30px; }
 .legal-hero p { max-width: 809px; margin: 0 auto 1em; line-height: 22.4px; }
 .legal-hero strong { font-weight: 700; }
 
@@ -596,15 +602,29 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
 .gmap__btn:hover { background: #163a54; }
 .gmap__link { background: none; border: 0; padding: 0; font: 400 15px/1 var(--font-body); color: var(--navy); text-decoration: underline; text-underline-offset: 3px; cursor: pointer; }
 
+.footer__social { display: none; }
+.footer__social a { flex: none; display: block; }
+.footer__social img { width: 30px; height: 30px; flex: none; max-width: none; object-fit: contain; }
 .footer__linkbtn { background: none; border: 0; padding: 0; font: inherit; color: var(--navy); text-decoration: underline; cursor: pointer; }
 
 @media (max-width: 1100px) {
-  .team { grid-template-columns: minmax(0, 648px); }
-  .news { grid-template-columns: 1fr; min-height: 0; gap: 60px; margin: 60px auto; }
-  .postcard-col { display: none; }
+  .news { grid-template-columns: 1fr; min-height: 0; gap: 48px; margin: 56px auto; }
+  .postcard-col { display: flex; flex-direction: column; align-items: flex-start; gap: 14px; margin: 0 20px; }
+  .postcard { width: min(568px, 100%); margin-left: 0; max-width: 100%; }
+  .postcard-col .btn--blue { margin: 0; }
   .infotafel { margin: 0 20px; min-height: 0; padding-bottom: 60px; }
   .post-wrap { grid-template-columns: 1fr; }
   .sidebar { margin: 0 20px 60px; }
+}
+
+@media (max-width: 1380px) {
+  .team { grid-template-columns: minmax(0, 648px); }
+}
+
+@media (max-width: 1000px) {
+  .contact__grid { grid-template-columns: minmax(0, 1fr); margin-top: 32px; }
+  .contact__info { padding-left: 0; }
+  .contact-form { width: 100%; max-width: 521px; padding: 8px 0 0; }
 }
 
 @media (max-width: 900px) {
@@ -681,6 +701,12 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
   .impressum h1, .contact h1 { font-size: 28px; }
   .post h1 { font-size: 30px; line-height: 38px; }
 
+  .footer__social { display: flex; justify-content: center; gap: 22px; padding: 28px 16px 0; }
+  .postcard__title { font-size: clamp(24px, 6.4vw, 40px); }
+  .postcard__inner { padding: 28px 20px 16px; }
+  .infotafel { padding: 96px 24px 40px; }
+  .infotafel__logo { width: 96px; height: 101px; right: 20px; top: 10px; }
+  .infotafel h2.infotafel__title, .infotafel__title { font-size: 30px; line-height: 42px; }
   .cookie-banner { flex-direction: column; align-items: stretch; }
   .cookie-banner__actions { justify-content: flex-end; flex-wrap: wrap; }
   .gmap { height: 320px; }
@@ -724,3 +750,12 @@ a { transition: color 150ms ease; }
 
 .contact-form__note { grid-column: 1 / -1; margin: 6px 0 0; font-size: 13px; line-height: 18px; color: #333; font-weight: 400; }
 .contact-form__note a { color: var(--navy); text-decoration: underline; }
+
+@media (max-width: 480px) {
+  .contact-form { grid-template-columns: minmax(0, 1fr); }
+  .contact-form label { margin-bottom: 6px; }
+  .btn { padding: 0 28px; }
+  .intro__actions { gap: 12px; }
+  .intro__actions .btn { min-width: 0; flex: 1 1 130px; }
+  .charter__actions .btn { width: 100%; }
+}
