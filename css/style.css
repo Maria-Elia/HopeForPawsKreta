@@ -214,7 +214,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
   display: flex;
   flex-direction: column;
   min-height: 600px;
-  padding: 19px 20px 63px 0;
+  padding: 19px 0 63px 0;
 }
 .intro__copy h2 {
   font-family: var(--font-heading);
@@ -222,8 +222,16 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
   line-height: 49px;
   margin: 0 0 20px 1px;
 }
+.intro__body {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
 .intro__copy p { margin: 0 0 1.1em; max-width: 440px; }
-.intro__actions { margin-top: auto; display: flex; gap: 34px; flex-wrap: wrap; }
+.intro__actions { margin-top: 14px; display: flex; gap: 34px; flex-wrap: wrap; justify-content: center; }
 .intro__actions .btn { min-width: 145px; }
 .intro__img { width: 556px; height: 600px; object-fit: cover; }
 
