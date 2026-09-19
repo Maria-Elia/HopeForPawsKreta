@@ -205,10 +205,6 @@ select:focus-visible,
 .nav__toggle-bar::before { top: -8px; }
 .nav__toggle-bar::after { top: 8px; }
 
-.nav.is-open .nav__list {
-  display: flex;
-}
-
 .section {
   padding: var(--space-5) 0;
   background: var(--color-bg);
