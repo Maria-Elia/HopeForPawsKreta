@@ -630,7 +630,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
   .contact-form { width: 100%; max-width: 521px; padding: 8px 0 0; }
 }
 
-@media (max-width: 900px) {
+@media (max-width: 1040px) {
   :root { --header-h: 62px; }
 
   .nav { grid-template-columns: 1fr auto; align-items: center; }
@@ -656,7 +656,9 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
   .nav.is-open .nav__list { display: flex; }
   .nav__list a { line-height: 48px; padding: 0 24px; border-top: 1px solid #e6edf2; }
   .nav__list .nav__hidden { display: block; }
+}
 
+@media (max-width: 900px) {
   .hero { display: block; height: 500px; }
   .hero__img { height: 500px; }
   .hero__img:nth-of-type(n + 2) { display: none; }
