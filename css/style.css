@@ -49,10 +49,11 @@ body {
   background: var(--white);
 }
 
-h1, h2, h3 { margin: 0; font-weight: 700; line-height: 1.4; overflow-wrap: anywhere; }
+h1, h2, h3 { margin: 0; font-weight: 700; line-height: 1.4; overflow-wrap: break-word; hyphens: manual; }
 p { margin: 0 0 1em; }
 img { max-width: 100%; height: auto; display: block; }
 .legal, .impressum, .post, .sidebar, .infotafel__body, .footer, .split__body, .contact { overflow-wrap: anywhere; }
+.legal p, .legal li, .impressum p, .post p, .sidebar p, .infotafel__body p, .split__body p { hyphens: auto; }
 ul, ol { margin: 0; padding: 0; list-style: none; }
 button { font-family: inherit; }
 
@@ -477,7 +478,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
   padding: 28px 20px 40px;
   min-height: 316px;
 }
-.legal-hero h1 { font-family: var(--font-heading); font-size: clamp(24px, 7.2vw, 33px); line-height: 1.4; margin-bottom: 30px; }
+.legal-hero h1 { font-family: var(--font-heading); font-size: clamp(22px, 6.6vw, 33px); line-height: 1.3; margin-bottom: 30px; }
 .legal-hero p { max-width: 809px; margin: 0 auto 1em; line-height: 22.4px; }
 .legal-hero strong { font-weight: 700; }
 
