@@ -643,7 +643,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
 }
 
 @media (max-width: 1100px) {
-  .post-wrap { max-width: 760px; }
+  .post-wrap { width: 100%; max-width: 760px; }
 }
 
 @media (max-width: 1040px) {
