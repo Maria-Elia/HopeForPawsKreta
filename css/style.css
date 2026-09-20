@@ -211,7 +211,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
   color: var(--white);
   display: grid;
   grid-template-columns: 1fr 556px;
-  padding: 0 max(24px, calc((100% - 980px) / 2 - 52px)) 62px max(24px, calc((100% - 980px) / 2));
+  padding: 0 max(24px, calc((100% - 980px) / 2 - 52px)) 0 max(24px, calc((100% - 980px) / 2));
 }
 .intro__copy {
   display: flex;
