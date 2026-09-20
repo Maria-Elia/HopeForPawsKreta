@@ -216,8 +216,9 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
 .intro__copy {
   display: flex;
   flex-direction: column;
+  justify-content: center;
   min-height: 600px;
-  padding: 19px 0 63px 0;
+  padding: 0;
 }
 .intro__copy h2 {
   font-family: var(--font-heading);
@@ -226,7 +227,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
   margin: 0 0 20px 1px;
 }
 .intro__body {
-  flex: 1;
+  flex: none;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
