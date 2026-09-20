@@ -696,7 +696,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
   .footer__grid { grid-template-columns: 1fr; gap: 24px; }
   .footer__heading { margin-bottom: 20px; }
   .footer__links { margin-top: 24px; }
-  .footer__legal { flex-direction: column; align-items: flex-end; gap: 12px; padding: 30px 16px 0; }
+  .footer__legal { flex-wrap: wrap; justify-content: center; gap: 12px 24px; padding: 30px 16px 0; }
 
   .banner { padding: 28px 24px 40px; }
   .team-card { flex-direction: column; height: auto; }
@@ -708,7 +708,8 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
   .about { padding: 50px 20px 50px; }
   .about h1 { font-size: 40px; line-height: 48px; }
   .split { grid-template-columns: 1fr; }
-  .split__media { height: clamp(220px, 62vw, 420px); }
+  .split__media { height: auto; }
+  .split__media img { position: static; display: block; width: 100%; height: auto; }
   .split--b .split__body { order: 0; }
   .split--a, .split--b { min-height: 0; height: auto; }
   .split__body { padding: 40px 24px; }
